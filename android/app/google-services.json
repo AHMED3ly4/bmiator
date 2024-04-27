@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "630148991230",
+    "project_id": "bmiator",
+    "storage_bucket": "bmiator.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630148991230:android:af42c59d759b4980917daf",
+        "android_client_info": {
+          "package_name": "com.example.bmiator"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAohkEereh3NxWxFxQ6e_dmmE6iO5WFZY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
