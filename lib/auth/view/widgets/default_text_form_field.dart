@@ -13,6 +13,7 @@ class DefaultTextFormField extends StatelessWidget {
     return TextFormField(
       obscureText: obscure,
       controller: controller,
+      style: Theme.of(context).textTheme.bodyMedium,
       validator: validator,
       decoration: InputDecoration(
         enabledBorder: const UnderlineInputBorder(
@@ -23,7 +24,10 @@ class DefaultTextFormField extends StatelessWidget {
         ),
         label: Text(
           label,
-          style: TextStyle(color: Theme.of(context).primaryColor),
+          style: TextStyle(
+            fontSize: 22,
+              color: Theme.of(context).primaryColor,
+          ),
         ),
       ),
     );

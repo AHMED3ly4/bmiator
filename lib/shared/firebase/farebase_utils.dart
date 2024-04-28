@@ -2,6 +2,8 @@ import 'package:bmiator/auth/data/models/bmi_model.dart';
 import 'package:bmiator/auth/data/models/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_ui_firestore/firebase_ui_firestore.dart';
+import 'package:flutter/material.dart';
 
 class FirebaseUtils{
   static CollectionReference<UserModel> getUsersCollection()=>
@@ -34,4 +36,20 @@ class FirebaseUtils{
     return docSnapshot.data()!;
   }
 
+  static Future<void> logout() async {
+    return FirebaseAuth.instance.signOut();
+  }
+
+
+  static Future<void> addBMI (String userId,BMIModel bmi) async {
+    final bmiCollection =getBMICollection(userId);
+    final doc = bmiCollection.doc();
+    bmi.id = doc.id;
+    return doc.set(bmi);
+  }
+
+
+
 }
+
+// return querySnapshots.docs.map((snapshot) => snapshot.data()).toList();

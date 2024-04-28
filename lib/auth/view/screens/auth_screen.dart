@@ -19,19 +19,13 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Bmiator",
-          style: TextStyle(
-            fontSize: 26,
-            fontWeight: FontWeight.w600
-          ),
-        ),
-      ),
-      body: Container(
+      resizeToAvoidBottomInset: false,
+      body: SafeArea(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(height: 40,),
+            Image.asset("assets/images/logo.png"),
+            SizedBox(height: 30,),
             DefaultTabController(
               length: 2,
               initialIndex: currentIndex,
@@ -49,7 +43,8 @@ class _AuthScreenState extends State<AuthScreen> {
                   ],
               ),
             ),
-            Expanded(child: tabs[currentIndex]),
+
+            tabs[currentIndex],
           ],
         ),
       ),

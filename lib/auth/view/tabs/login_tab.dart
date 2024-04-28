@@ -21,7 +21,6 @@ class LoginTab extends StatelessWidget {
       child: Form(
         key: _formKey ,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
              DefaultTextFormField(
                 label: "Email",
@@ -48,6 +47,7 @@ class LoginTab extends StatelessWidget {
             BlocListener<AuthViewModel,AuthStates>(
                 listener: (_, state) {
                   if(state is LoginError){
+                    UIUtils.hideLoading(context);
                     UIUtils.showMessage(state.errorMessage);
                   }else if(state is LoginLoading){
                     UIUtils.showLoading(context);

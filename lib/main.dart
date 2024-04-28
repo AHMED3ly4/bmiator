@@ -1,6 +1,8 @@
 import 'package:bmiator/auth/view/screens/auth_screen.dart';
 import 'package:bmiator/auth/view_model/auth_cubit.dart';
+import 'package:bmiator/home/view/screens/history_screen.dart';
 import 'package:bmiator/home/view/screens/home_screen.dart';
+import 'package:bmiator/home/view/screens/result_screen.dart';
 import 'package:bmiator/shared/theming/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -29,9 +31,12 @@ class Bmiator extends StatelessWidget {
       title: "Bmiator",
       debugShowCheckedModeBanner: false,
       theme: AppTheme.themeData,
+
       routes: {
         AuthScreen.routeName : (context) => const AuthScreen(),
         HomeScreen.routeName : (context) => const HomeScreen(),
+        ResultScreen.routeName : (context) => const ResultScreen(),
+        HistoryScreen.routeName : (context) => const HistoryScreen(),
       },
     );
   }
