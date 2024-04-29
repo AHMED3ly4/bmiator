@@ -1,5 +1,6 @@
 import 'package:bmiator/auth/view/screens/auth_screen.dart';
 import 'package:bmiator/auth/view_model/auth_cubit.dart';
+import 'package:bmiator/home/view/screens/edit_screen.dart';
 import 'package:bmiator/home/view/screens/history_screen.dart';
 import 'package:bmiator/home/view/screens/home_screen.dart';
 import 'package:bmiator/home/view/screens/result_screen.dart';
@@ -39,6 +40,7 @@ class Bmiator extends StatelessWidget {
         HomeScreen.routeName : (context) => const HomeScreen(),
         ResultScreen.routeName : (context) => const ResultScreen(),
         HistoryScreen.routeName : (context) => const HistoryScreen(),
+        EditScreen.routeName : (context) => const EditScreen(),
       },
     );
   }

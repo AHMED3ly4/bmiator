@@ -1,5 +1,6 @@
 import 'package:bmiator/auth/data/models/bmi_model.dart';
 import 'package:bmiator/auth/view_model/auth_cubit.dart';
+import 'package:bmiator/home/view/screens/edit_screen.dart';
 import 'package:bmiator/home/view_model/home_cubit.dart';
 import 'package:bmiator/home/view_model/home_states.dart';
 import 'package:bmiator/shared/utils/ui_utils.dart';
@@ -19,8 +20,8 @@ class HistoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(12),
-      margin: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(12),
+      margin: const EdgeInsets.all(8),
       decoration: BoxDecoration(
           border:Border.all(color: Colors.white),
           shape: BoxShape.rectangle,
@@ -34,7 +35,10 @@ class HistoryItem extends StatelessWidget {
               Text(DateFormat('dd/MM/yyyy HH:mm').format(bmi.date)),
               const Spacer(),
               IconButton(onPressed: (){
-
+                Navigator.pushNamed(context,
+                  EditScreen.routeName  ,
+                  arguments: bmi
+                );
               }, icon: Icon(Icons.edit)),
               BlocBuilder<HomeCubit,HomeStates>(
                 bloc: homeCubit,

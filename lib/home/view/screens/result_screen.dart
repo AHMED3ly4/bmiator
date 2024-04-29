@@ -1,4 +1,6 @@
 import 'package:bmiator/auth/data/models/bmi_model.dart';
+import 'package:bmiator/auth/view/widgets/default_elevated_button.dart';
+import 'package:bmiator/home/view/screens/history_screen.dart';
 import 'package:bmiator/home/view/widgets/reusable_card.dart';
 import 'package:bmiator/shared/theming/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +45,10 @@ class ResultScreen extends StatelessWidget {
               ),
             ),
           ),
-
+          DefaultElevatedButton(
+              label: "Show history",
+            onPressed: (){Navigator.pushReplacementNamed(context, HistoryScreen.routeName);},
+          )
         ],
       ),
     );
