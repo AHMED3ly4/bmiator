@@ -16,7 +16,35 @@ class HomeCubit extends Cubit<HomeStates>{
     }
   }
 
+  Future<void> getBMIs(String userId,[DateTime? lastBmiDate]) async {
+    emit(GetBMIsLoading());
+    try{
+      final history = await FirebaseUtils.getBMIs(userId,lastBmiDate);
+      emit(GetBMIsSuccess(history!));
+    }catch(error){
+      emit(GetBMIsError("can not get history"));
+    }
+  }
 
+  Future<void> deleteBMI(String userId,String bmiId) async {
+    emit(DeleteBMILoading());
+    try{
+      await FirebaseUtils.deleteBMI(userId, bmiId);
+      emit(DeleteBMISuccess());
+    }catch(error){
+      emit(DeleteBMIError("can not delete this"));
+    }
+  }
+
+  Future<void> editBMI(String userId,BMIModel bmi) async {
+    emit(EditBMILoading());
+    try{
+      await FirebaseUtils.editBMI(userId, bmi);
+      emit(EditBMISuccess());
+    }catch(error){
+      emit(EditBMIError("can not edit"));
+    }
+  }
 
 
 }

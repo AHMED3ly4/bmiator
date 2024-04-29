@@ -2,8 +2,6 @@ import 'package:bmiator/auth/data/models/bmi_model.dart';
 import 'package:bmiator/auth/data/models/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_ui_firestore/firebase_ui_firestore.dart';
-import 'package:flutter/material.dart';
 
 class FirebaseUtils{
   static CollectionReference<UserModel> getUsersCollection()=>
@@ -48,8 +46,21 @@ class FirebaseUtils{
     return doc.set(bmi);
   }
 
+  static Future<void> deleteBMI (String userId,String bmiId) async {
+    final bmiCollection =getBMICollection(userId);
+    final doc = bmiCollection.doc(bmiId);
+    return doc.delete();
+  }
+  static Future<void> editBMI (String userId,BMIModel bmi) async {
+    final bmiCollection =getBMICollection(userId);
+    final doc = bmiCollection.doc(bmi.id);
+    return doc.set(bmi);
+  }
 
+  static Future<List<BMIModel>?> getBMIs(String userId,[DateTime? lastBmiDate]) async {
+    final bmiCollection = getBMICollection(userId).orderBy("date",descending: true).where("date",isLessThan: lastBmiDate != null ? Timestamp.fromDate(lastBmiDate): null).limit(10);
+    final querySnapshots = await bmiCollection.get();
+    return querySnapshots.docs.map((snapshot) => snapshot.data()).toList();
+  }
 
 }
-
-// return querySnapshots.docs.map((snapshot) => snapshot.data()).toList();

@@ -19,33 +19,39 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset("assets/images/logo.png"),
-            SizedBox(height: 30,),
-            DefaultTabController(
-              length: 2,
-              initialIndex: currentIndex,
-              child: TabBar(
-                dividerColor: Colors.transparent,
-                indicatorColor: Theme.of(context).primaryColor,
-                labelStyle: TextStyle(color: Theme.of(context).primaryColor),
-                onTap: (index){
-                  currentIndex= index;
-                  setState(() {});
-                },
-                  tabs: const [
-                    Tab(child:Text("Login",style: TextStyle(fontSize: 25),) ,),
-                    Tab(child:Text("Register",style: TextStyle(fontSize: 25),) ,),
+        child: SingleChildScrollView(
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  children: [
+                    Image.asset("assets/images/logo.png"),
+                    DefaultTabController(
+                      length: 2,
+                      initialIndex: currentIndex,
+                      child: TabBar(
+                        dividerColor: Colors.transparent,
+                        indicatorColor: Theme.of(context).primaryColor,
+                        labelStyle: TextStyle(color: Theme.of(context).primaryColor),
+                        onTap: (index){
+                          currentIndex= index;
+                          setState(() {});
+                        },
+                        tabs: const [
+                          Tab(child:Text("Login",style: TextStyle(fontSize: 25),) ,),
+                          Tab(child:Text("Register",style: TextStyle(fontSize: 25),) ,),
+                        ],
+                      ),
+                    ),
                   ],
-              ),
+                ),
+                tabs[currentIndex],
+              ],
             ),
-
-            tabs[currentIndex],
-          ],
+          ),
         ),
       ),
     );
